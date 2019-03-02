@@ -15,7 +15,7 @@ class CreateTableInvoices extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum("state",["OK","CANCEL"]);
+            $table->enum("state",[\App\Invoice::STATE_OK,\App\Invoice::STATE_CANCEL]);
             $table->timestamps();
         });
     }

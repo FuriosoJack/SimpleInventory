@@ -13,11 +13,11 @@ class CreateTableInventory extends Migration
      */
     public function up()
     {
-        Schema::create('inventory', function (Blueprint $table) {
+        Schema::create('inventorys', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("quantity_current");
             $table->integer("id_lote")->unsigned();
-            $table->foreign("id_lote")->references("id")->on("lote");
+            $table->foreign("id_lote")->references("id")->on("lotes");
             $table->timestamps();
         });
     }

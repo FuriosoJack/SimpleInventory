@@ -18,7 +18,7 @@ class CreateTableDetailsInvoice extends Migration
             $table->integer("id_invoice")->unsigned();
             $table->foreign("id_invoice")->references("id")->on("invoices");
             $table->integer("id_inventory")->unsigned();
-            $table->foreign("id_inventory")->references("id")->on("inventory");
+            $table->foreign("id_inventory")->references("id")->on("inventorys");
             $table->integer("quantiry");
             $table->timestamps();
         });
