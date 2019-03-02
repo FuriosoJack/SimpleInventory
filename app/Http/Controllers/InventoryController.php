@@ -26,9 +26,9 @@ class InventoryController extends Controller
 
         $inventory = Inventory::create($request->only(['quantity_current','id_lote']));
 
-        throw_if(!$inventory,HttpException::class,"Fallo la creacion del inventario");
+        throw_if(!$inventory,\Exception::class,"Fallo la creacion del inventario");
 
-        return $this->response->created();
+        return $this->response->created(null,$inventory);
     }
 
 

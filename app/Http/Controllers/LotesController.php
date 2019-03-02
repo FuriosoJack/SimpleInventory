@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Lote;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class LotesController extends Controller
 {
@@ -24,10 +25,15 @@ class LotesController extends Controller
     public function store(Request $request)
     {
 
-        $lote = Lote::create($request->only(['quantity','price']));
 
+       $dataBaic = $request->only(['quantity','price_unit','id_product']);
 
-        return $this->response->created($lote);
+        $dataBaic['code'] = str_random("10");
+        $lote = Lote::create($dataBaic);
+
+        throw_if(!$lote,\Exception::class,"Error en la creacion del lote");
+
+        return $this->response->created(null,$lote);
 
     }
 

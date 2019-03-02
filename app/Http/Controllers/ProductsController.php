@@ -26,10 +26,10 @@ class ProductsController extends Controller
         $product = Product::create($request->only(['name']));
 
 
-        throw_if(!$product,HttpException::class,"Fallo la creacion del producto");
+        throw_if(!$product,\Exception::class,"Fallo la creacion del producto");
 
 
-        $this->response->created();
+        $this->response->created(null,$product);
 
     }
 }
