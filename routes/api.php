@@ -16,3 +16,30 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//Route::resource('inventory','InventoryController')->only(['index','store','show']);
+//Route::resource('products','ProductsController')->only(['index','store','show']);
+
+$api = app('Dingo\Api\Routing\Router');
+$api->version(["v1"],function($api) {
+
+
+    //Productos
+
+    $api->get("/products/","\App\Http\Controllers\ProductsController@index");
+    $api->post("/products/","\App\Http\Controllers\ProductsController@store");
+
+    //Lotes
+    $api->get("/lotes/","\App\Http\Controllers\LotesController@index");
+    $api->post("/lotes/","\App\Http\Controllers\LotesController@store");
+
+
+    //Inventario
+    $api->get("/invetorys/","\App\Http\Controllers\InventoryController@index");
+    $api->post("/invetorys/","\App\Http\Controllers\InventoryController@store");
+
+
+
+
+});
