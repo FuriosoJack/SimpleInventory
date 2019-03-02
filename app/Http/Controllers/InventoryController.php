@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Inventory;
+use App\Lote;
 use App\Product;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
@@ -24,7 +25,13 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
 
-        $inventory = Inventory::create($request->only(['quantity_current','id_lote']));
+        $lote = Lote::find($request->get('id_lote'));
+
+
+        $inventory = $lote->inventory()->create([
+            'quantity_current' => $lote->quantity
+        ]);
+
 
         throw_if(!$inventory,\Exception::class,"Fallo la creacion del inventario");
 

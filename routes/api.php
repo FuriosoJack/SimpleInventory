@@ -36,10 +36,11 @@ $api->version(["v1"],function($api) {
 
 
     //Inventario
-    $api->get("/invetorys/","\App\Http\Controllers\InventoryController@index");
-    $api->post("/invetorys/","\App\Http\Controllers\InventoryController@store");
+    $api->get("/inventorys/","\App\Http\Controllers\InventoryController@index");
+    $api->post("/inventorys/","\App\Http\Controllers\InventoryController@store");
 
 
-
+    //Facturas
+    $api->post("/invoices/","\App\Http\Controllers\InvoiceController@store");
 
 });

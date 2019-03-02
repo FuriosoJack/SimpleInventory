@@ -29,7 +29,7 @@ class ProductsController extends Controller
         throw_if(!$product,\Exception::class,"Fallo la creacion del producto");
 
 
-        $this->response->created(null,$product);
+        return $this->response->created(null,$product);
 
     }
 }

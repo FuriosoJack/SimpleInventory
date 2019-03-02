@@ -8,7 +8,7 @@ class DetailInvoice extends Model
 {
     protected $table = "details_invoice";
 
-    protected $fillable = ["id_invoice","id_inventory","quantiry"];
+    protected $fillable = ["id_invoice","id_inventory","quantity"];
 
     public function invoice()
     {
