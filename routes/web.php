@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/',[
+    'as' => 'index',
+    'uses' => '\App\Http\Controllers\IndexController@index'
+]);

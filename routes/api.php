@@ -27,8 +27,13 @@ $api->version(["v1"],function($api) {
 
     //Productos
 
-    $api->get("/products/","\App\Http\Controllers\ProductsController@index");
-    $api->post("/products/","\App\Http\Controllers\ProductsController@store");
+    $api->get("/products/",[
+        "as" => "products.index",
+        "uses" => "\App\Http\Controllers\ProductsController@index"]);
+
+    $api->post("/products/",[
+        "as" => "products.store",
+        "uses" =>"\App\Http\Controllers\ProductsController@store"]);
 
     //Lotes
     $api->get("/lotes/","\App\Http\Controllers\LotesController@index");
