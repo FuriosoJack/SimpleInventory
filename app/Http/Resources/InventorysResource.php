@@ -17,6 +17,7 @@ class InventorysResource extends JsonResource
     {
         return  [
             "id" => $this->id,
+            "producto" => $this->lote->product->name,
             "cantidad_inventario" => $this->quantity_current,
             "lote_code" => $this->lote->code,
             "cantidad_lote" => $this->lote->quantity,

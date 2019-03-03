@@ -103,11 +103,11 @@
                 <table class="ui celled table" id="tableInvetory">
                     <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Cantidad En inventario</th>
-                        <th>Code Lote</th>
-                        <th>Cantidad Lote</th>
-                        <th>Precio Lote</th>
+                        <th>ID Inventario</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad en inventario</th>
+                        <th>Cantidad del Lote</th>
                     </tr>
                     </thead>
                 </table>
@@ -214,17 +214,19 @@
                     'data': "id"
                 },
                 {
-                    "data": "cantidad_inventario"
-                },
-                {
-                    "data": "lote_code"
-                },
-                {
-                    "data" : "cantidad_lote"
+                    'data': "producto"
                 },
                 {
                     "data": "precio_lote"
+                },
+                {
+                    "data": "cantidad_inventario"
+                },
+
+                {
+                    "data" : "cantidad_lote"
                 }
+
 
 
             ]
