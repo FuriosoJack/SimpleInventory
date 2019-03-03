@@ -26,7 +26,7 @@ class StoreInvoiceRequest extends FormRequest
         return [
             'inventorys' => 'required|array',
             'inventorys.*' => 'array',
-            'inventorys.*.id_inventory' => 'required|exists:inventorys,id',
+            'inventorys.*.id' => 'required|exists:inventorys,id',
             'inventorys.*.quantity' => 'required|integer'
         ];
     }

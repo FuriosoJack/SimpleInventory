@@ -27,14 +27,14 @@ class InvoiceController extends Controller
 
             //Creacion de los detalles
             $invoice->detailsInvoice()->create([
-                'id_inventory' => $inventory['id_inventory'],
+                'id_inventory' => $inventory['id'],
                 'quantity' => $inventory['quantity']
             ]);
 
             //Se descuenta la cantidad del inventario
-            $inventoryModel = Inventory::find($inventory['id_inventory']);
-            $inventory->update([
-                'quantity_current' => (((int)$inventoryModel->quantity_current) - 1)
+            $inventoryModel = Inventory::find($inventory['id']);
+            $inventoryModel->update([
+                'quantity_current' => (((int)$inventoryModel->quantity_current) - $inventory['quantity'] )
             ]);
 
             $inventoryModel->save();
