@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreInventoryRequest;
 use App\Http\Resources\InventorysResource;
 use App\Http\Resources\ProductsInStock;
 use App\Http\Resources\ProductsResource;
@@ -37,7 +38,7 @@ class InventoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreInventoryRequest $request)
     {
 
         $lote = Lote::find($request->get('id_lote'));

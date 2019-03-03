@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLotesRequest;
 use App\Http\Resources\LotesResource;
 use App\Lote;
 use Dingo\Api\Routing\Helpers;
@@ -23,7 +24,7 @@ class LotesController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreLotesRequest $request)
     {
 
 

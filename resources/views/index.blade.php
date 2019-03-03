@@ -38,6 +38,7 @@
                             type: 'POST',
                             data: data ,
                             success: function(data,textStatus, jqXHR){ //http://api.jquery.com/jquery.ajax/
+                                alert("Producto Creado");
                                 location.reload();
                             },
                             error: function(jqXHR, textStatus, errorThrown){
@@ -79,7 +80,7 @@
                 <div class="ui form" id="formCreateLote" method="post">
                     <div class="field">
                         <label>Productos
-                            <a class="ui" href="#" id="btnAddProduct"><i class="icon circular plus"></i></a> </label>
+                            <a class="ui" href="#" id="btnAddProduct"><i class="icon circular plus  animated infinite pulse"></i></a> </label>
 
                         <select class="ui dropdown fluid" id="selectProducts" name="product" required>
                             <option value=""></option>
@@ -184,6 +185,8 @@
                                     type: 'POST',
                                     data: JSON.stringify(datasend) ,
                                     success: function(data,textStatus, jqXHR){ //http://api.jquery.com/jquery.ajax/
+
+
                                         //Se pregunta si se quiere añadir al lote de una vez
                                         location.reload();
                                     },

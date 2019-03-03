@@ -41,8 +41,8 @@
             ¿Quiere CANCELAR la factura?
         </div>
         <div class="actions">
-            <div class="ui cancel negative button">Cancelar</div>
-            <div class="ui approve positive button">Aceptar</div>
+            <div class="ui cancel negative button">Si</div>
+            <div class="ui approve positive button">No</div>
         </div>
     </div>
 

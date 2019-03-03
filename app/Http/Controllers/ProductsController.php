@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductsResource;
 use App\Product;
@@ -20,7 +21,7 @@ class ProductsController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
 
         $product = Product::create($request->only(['name']));

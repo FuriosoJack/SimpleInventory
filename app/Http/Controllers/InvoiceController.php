@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CancelInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Inventory;
 use App\Invoice;
@@ -49,7 +50,7 @@ class InvoiceController extends Controller
     }
 
 
-    public function cancel(Request $request)
+    public function cancel(CancelInvoiceRequest $request)
     {
         $invoice = Invoice::findOrFail($request->get('id_invoice'));
 
