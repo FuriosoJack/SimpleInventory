@@ -62,7 +62,14 @@
         </div>
     </div>
 
+
     <div class="ui divider"></div>
+    <div class="ui vertical animated button" tabindex="0">
+        <div class="visible content">Comprar</div>
+        <div class="hidden content">
+            <i class="shop icon"></i>
+        </div>
+    </div>
     <div class="ui two column padded grid">
         <div class="column">
             <div class="ui segment">
