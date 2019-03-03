@@ -44,7 +44,7 @@ class InvoiceController extends Controller
         }
 
         //Se descuenta un elemento
-        return $this->response->created(null,$invoice->detailsInvoice);
+        return $this->response->created(null,$invoice);
 
     }
 

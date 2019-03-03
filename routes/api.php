@@ -58,6 +58,9 @@ $api->version(["v1"],function($api) {
         "as" => "inventory.store",
         "uses" => "\App\Http\Controllers\InventoryController@store"]);
 
+    $api->get("/inventorys/stock",[
+        "as" => "inventory.stock",
+        "uses" => "\App\Http\Controllers\InventoryController@stock"]);
 
     //Facturas
     $api->post("/invoices/","\App\Http\Controllers\InvoiceController@store");

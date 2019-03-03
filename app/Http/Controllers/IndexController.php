@@ -13,7 +13,8 @@ class IndexController extends Controller
 
         $products = Product::all();
         return view('index',[
-            'products' => $products
+            'products' => $products,
+            'titlePage' => "Inventario"
         ]);
     }
 
@@ -22,7 +23,8 @@ class IndexController extends Controller
     {
         $inventorysInStock = Inventory::inStock()->get();
         return view('shop',[
-            'inventorys' => $inventorysInStock
+            'inventorys' => $inventorysInStock,
+            'titlePage' => "Tienda"
         ]);
     }
 }

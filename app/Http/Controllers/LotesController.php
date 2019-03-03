@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LotesResource;
 use App\Lote;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class LotesController extends Controller
 
         $lotes = Lote::all();
 
-        return $this->response->array($lotes->toArray());
+        return $this->response->array(LotesResource::collection($lotes)->response()->getData(true));
 
     }
 

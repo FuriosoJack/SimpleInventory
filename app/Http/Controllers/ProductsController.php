@@ -16,7 +16,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-       return $this->response->array($products->toArray());
+       return $this->response->array(ProductsResource::collection($products)->response()->getData(true));
 
     }
 

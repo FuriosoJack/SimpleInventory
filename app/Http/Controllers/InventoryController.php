@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\InventorysResource;
+use App\Http\Resources\ProductsInStock;
+use App\Http\Resources\ProductsResource;
 use App\Inventory;
 use App\Lote;
 use App\Product;
@@ -18,7 +20,7 @@ class InventoryController extends Controller
 
         $inventorys = Inventory::all();
 
-        return $this->response->array($inventorys->toArray());
+        return $this->response->array(ProductsResource::collection($inventorys)->response()->getData(true));
 
 
     }
@@ -49,6 +51,14 @@ class InventoryController extends Controller
         throw_if(!$inventory,\Exception::class,"Fallo la creacion del inventario");
 
         return $this->response->created(null,$inventory);
+    }
+
+
+    public function stock()
+    {
+
+        $inStock = Inventory::inStock()->get();
+        return $this->response->array(ProductsInStock::collection($inStock)->response()->getData(true));
     }
 
 

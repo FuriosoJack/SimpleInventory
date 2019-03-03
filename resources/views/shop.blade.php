@@ -1,6 +1,28 @@
 @extends('app.layout')
 @section('body')
 
+    <template id="itemProduct">
+        <div class="item">
+            <div class="ui small image">
+                <img src="https://semantic-ui.com/images/wireframe/image.png">
+            </div>
+            <div class="content">
+                <div class="header"></div>
+                <div class="meta">
+                    <span class="price"></span>
+                </div>
+                <div class="description">
+                    <p></p>
+                </div>
+                <div class="extra">
+                    <div class="ui right floated primary button">
+                        Añadir
+                        <i class="right chevron icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
     <div class="ui two column padded grid">
         <div class="column">
             <div class="ui segment">
@@ -39,11 +61,14 @@
         </div>
         <div class="column">
             <div class="ui segment">
-                <h3 class="ui header">Reision</h3>
+                <h3 class="ui header">Revision</h3>
 
 
             </div>
 
         </div>
     </div>
+
+
+    
 @endsection
