@@ -67,4 +67,8 @@ $api->version(["v1"],function($api) {
         "as" => "invoices.store",
         "uses" => "\App\Http\Controllers\InvoiceController@store"]);
 
+    $api->post("/invoices/cancel",[
+        "as" => "invoices.cancel",
+        "uses" => "\App\Http\Controllers\InvoiceController@cancel"]);
+
 });

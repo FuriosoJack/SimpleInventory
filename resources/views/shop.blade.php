@@ -20,23 +20,29 @@
                     </th>
                 </tr>
                 <tr>
-                    <th colspan="2">
-                        Estado
+                    <th>
+                        Producto
                     </th>
                     <th>
-
+                        Cantidad
+                    </th>
+                    <th>
+                        Subtotal
                     </th>
                 </tr>
-
                 </thead>
                 <tbody>
 
                 </tbody>
+                <tfoot>
+
+                </tfoot>
             </table>
+            ¿Quiere CANCELAR la factura?
         </div>
         <div class="actions">
-            <div class="ui cancel negative button">Aprobar</div>
-            <div class="ui approve positive button">Aprobar</div>
+            <div class="ui cancel negative button">Cancelar</div>
+            <div class="ui approve positive button">Aceptar</div>
         </div>
     </div>
 
@@ -231,7 +237,7 @@
                 for(i = 0; i < productsBuy.length; i ++){
                     console.log(productsBuy);
                     var trProduct = $("#trproduct-" + productsBuy[i].id);
-                    productsBuy[i].quantity = trProduct.find("input").val();
+                    productsBuy[i].quantity = parseInt(trProduct.find("input").val());
 
                 }
 
@@ -250,16 +256,62 @@
                     type: 'POST',
                     success: function(data,textStatus, jqXHR){ //http://api.jquery.com/jquery.ajax/
 
+                        console.log(data);
+                        var totalFactura = 0;
+                        for(i = 0; i < productsBuy.length; i++){
+
+                            var subtotalDetail = (productsBuy[i].price*productsBuy[i].quantity);
+                            var trdetail = "<tr><td>"+productsBuy[i].name+"</td><td>"+productsBuy[i].quantity+"</td><td>"+subtotalDetail+"</td></tr>";
+                            totalFactura = totalFactura + subtotalDetail;
+                            $("#tabledetailInvoice").find("tbody").append(trdetail);
+
+
+                        }
+                        var trdetail = "<tr class='active'><th colspan='2'>Total</th><th colspan='3'>"+totalFactura+"</th></tr>";
+                        $("#tabledetailInvoice").find("tfoot").append(trdetail);
+
                         $('.ui.container').dimmer('hide');
                         $('#modalConfirmCancelInvoice')
                             .modal({
                                 closable  : false,
                                 onDeny    : function(){
-                                    location.reload();
+
+                                    if(confirm("esta seguro?")){
+
+                                        //Se hace la cancelacion de la factura
+
+                                        var dataSend = {
+                                            id_invoice : data.invoice.id
+                                        };
+
+                                        console.log(dataSend);
+
+                                        $.ajax({
+                                            'url': '{{app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('invoices.cancel')}}',
+                                            headers: {
+                                                'Accept':'application/prs.simpleinventory.v1+json',
+                                                'Content-Type':'application/json'
+                                            },
+                                            dataType: 'json',
+                                            data: JSON.stringify(dataSend),
+                                            type: 'POST',
+                                            success: function(data,textStatus, jqXHR){ //http://api.jquery.com/jquery.ajax/
+
+                                                window.location.replace("{{route('index')}}");
+
+
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown){
+
+                                            }
+                                        });
+                                    }
+
                                 },
                                 onApprove : function() {
-
-
+                                    if(confirm("esta seguro?")){
+                                        location.reload();
+                                    }
 
                                 }
                             })
