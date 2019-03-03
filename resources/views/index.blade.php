@@ -52,6 +52,16 @@
     </div>
 
 
+    <!-- Modal confirmacion de inventario -->
+
+    <div class="ui basic modal" id="modalCreatorAddInventory">
+        <div class="header">Crear un inventario de este lote?</div>
+        <div class="actions">
+            <div class="ui approve positive button">Approve</div>
+            <div class="ui cancel negative button">Cancel</div>
+        </div>
+    </div>
+
     <div class="ui divider"></div>
     <div class="ui two column padded grid">
         <div class="column">
@@ -90,8 +100,19 @@
         <div class="column">
             <div class="ui segment">
 
+                <table class="ui celled table" id="tableInvetory">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Cantidad En inventario</th>
+                        <th>Code Lote</th>
+                        <th>Cantidad Lote</th>
+                        <th>Precio Lote</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
-            <p>sds</p>
+
         </div>
     </div>
 
@@ -106,12 +127,107 @@
             var form = $("#formCreateLote");
 
 
-            var select = $("#product")
-            form.validate();
+            var select = form.find("select").first();
+
+
+
+            var inputQuantity = form.find("input[name='quantity']").first();
+
+            var inputPrice = form.find("input[name='price']").first();
+
+
+            var data = {
+                quantity: inputQuantity.val(),
+                price_unit: inputPrice.val(),
+                id_product: select.val()
+            };
+
+            $.ajax({
+                'url': '{{app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('lotes.store')}}',
+                headers: {
+                    'Accept':'application/prs.simpleinventory.v1+json',
+                    'Content-Type':'application/json'
+                },
+                dataType: 'json',
+                type: 'POST',
+                data: JSON.stringify(data) ,
+                success: function(data,textStatus, jqXHR){ //http://api.jquery.com/jquery.ajax/
+                    //Se pregunta si se quiere añadir al lote de una vez
+
+                    var datasend = {
+                        id_lote: data.lote.id
+                    };
+                    $('#modalCreatorAddInventory')
+                        .modal({
+                            closable  : false,
+                            onDeny    : function(){
+                                location.reload();
+                            },
+                            onApprove : function() {
+
+                            $.ajax({
+                                    'url': '{{app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('inventory.store')}}',
+                                    headers: {
+                                        'Accept':'application/prs.simpleinventory.v1+json',
+                                        'Content-Type':'application/json'
+                                    },
+                                    dataType: 'json',
+                                    type: 'POST',
+                                    data: JSON.stringify(datasend) ,
+                                    success: function(data,textStatus, jqXHR){ //http://api.jquery.com/jquery.ajax/
+                                        //Se pregunta si se quiere añadir al lote de una vez
+                                        location.reload();
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown){
+
+                                    }
+                                });
+
+
+                            }
+                        })
+                        .modal('show');
+
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+
+                }
+            });
 
 
 
 
+        });
+
+
+        $("#tableInvetory").DataTable( {
+            ajax: {
+                url: "{{app('Dingo\\Api\\Routing\\UrlGenerator')->version('v1')->route('inventory.indexDetails')}}",
+                dataSrc: 'data',
+                headers: {
+                    'Accept':'application/prs.simpleinventory.v1+json',
+                    'Content-Type':'application/json'
+                },
+            },
+            columns: [
+                {
+                    'data': "id"
+                },
+                {
+                    "data": "cantidad_inventario"
+                },
+                {
+                    "data": "lote_code"
+                },
+                {
+                    "data" : "cantidad_lote"
+                },
+                {
+                    "data": "precio_lote"
+                }
+
+
+            ]
         });
 
 

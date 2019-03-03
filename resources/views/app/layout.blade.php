@@ -7,8 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{{asset('semantic/semantic.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/dataTables.semanticui.css')}}">
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('semantic/semantic.js')}}"></script>
+    <script src="{{asset('js/datatables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.semanticui.min.js')}}"></script>
 </head>
 <body>
 <div class="ui container">

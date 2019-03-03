@@ -36,13 +36,27 @@ $api->version(["v1"],function($api) {
         "uses" =>"\App\Http\Controllers\ProductsController@store"]);
 
     //Lotes
-    $api->get("/lotes/","\App\Http\Controllers\LotesController@index");
-    $api->post("/lotes/","\App\Http\Controllers\LotesController@store");
+    $api->get("/lotes/",[
+        'as' => 'lotes.index',
+        'uses' => "\App\Http\Controllers\LotesController@index"]);
+
+    $api->post("/lotes/",[
+        'as' => 'lotes.store',
+        'uses' => "\App\Http\Controllers\LotesController@store"]);
 
 
     //Inventario
-    $api->get("/inventorys/","\App\Http\Controllers\InventoryController@index");
-    $api->post("/inventorys/","\App\Http\Controllers\InventoryController@store");
+    $api->get("/inventorys/",[
+        "as" => "inventory.index",
+        "uses" => "\App\Http\Controllers\InventoryController@index"]);
+
+    $api->get("/inventorys/details",[
+        "as" => "inventory.indexDetails",
+        "uses" => "\App\Http\Controllers\InventoryController@indexDetails"]);
+
+    $api->post("/inventorys/",[
+        "as" => "inventory.store",
+        "uses" => "\App\Http\Controllers\InventoryController@store"]);
 
 
     //Facturas

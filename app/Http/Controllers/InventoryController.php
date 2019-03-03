@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InventorysResource;
 use App\Inventory;
 use App\Lote;
 use App\Product;
@@ -21,6 +22,18 @@ class InventoryController extends Controller
 
 
     }
+
+    public function indexDetails()
+    {
+
+        $invetorys = Inventory::all();
+
+
+       return $this->response->array(InventorysResource::collection($invetorys)->response()->getData(true));
+
+
+    }
+
 
     public function store(Request $request)
     {
