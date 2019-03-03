@@ -57,19 +57,20 @@
     <div class="ui basic modal" id="modalCreatorAddInventory">
         <div class="header">Crear un inventario de este lote?</div>
         <div class="actions">
-            <div class="ui approve positive button">Approve</div>
-            <div class="ui cancel negative button">Cancel</div>
+            <div class="ui approve positive button">Aprobar</div>
         </div>
     </div>
 
 
     <div class="ui divider"></div>
-    <div class="ui vertical animated button" tabindex="0">
+
+    <a href="{{route('shop')}}"> <div class="ui vertical animated button" tabindex="0">
         <div class="visible content">Comprar</div>
         <div class="hidden content">
             <i class="shop icon"></i>
         </div>
     </div>
+    </a>
     <div class="ui two column padded grid">
         <div class="column">
             <div class="ui segment">
@@ -106,6 +107,7 @@
         </div>
         <div class="column">
             <div class="ui segment">
+                <h3 class="ui header">Inventario</h3>
 
                 <table class="ui celled table" id="tableInvetory">
                     <thead>

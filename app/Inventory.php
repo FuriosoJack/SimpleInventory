@@ -11,6 +11,11 @@ class Inventory extends Model
     protected $fillable = ["quantity_current","id_lote"];
 
 
+    public function scopeInStock($query)
+    {
+        return $query->where('quantity_current', '>', 0);
+    }
+
     public function lote()
     {
         return $this->belongsTo(Lote::class,"id_lote","id");
