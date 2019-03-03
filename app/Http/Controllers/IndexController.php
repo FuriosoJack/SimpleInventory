@@ -21,9 +21,8 @@ class IndexController extends Controller
 
     public function shop()
     {
-        $inventorysInStock = Inventory::inStock()->get();
+
         return view('shop',[
-            'inventorys' => $inventorysInStock,
             'titlePage' => "Tienda"
         ]);
     }

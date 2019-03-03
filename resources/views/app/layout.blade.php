@@ -12,6 +12,7 @@
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('semantic/semantic.js')}}"></script>
     <script src="{{asset('js/datatables.min.js')}}"></script>
+    <script src="{{asset('js/alasql.min.js')}}"></script>
     <script src="{{asset('js/dataTables.semanticui.min.js')}}"></script>
 </head>
 <body>

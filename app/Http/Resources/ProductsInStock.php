@@ -16,8 +16,8 @@ class ProductsInStock extends JsonResource
     public function toArray($request)
     {
         return [
-          //"name" =>  $this->lote->product->name,
-          //"price" => $this->lote->price_unit,
+          "name" =>  $this->lote->product->name,
+          "price" => $this->lote->price_unit,
           "stock" => $this->quantity_current
         ];
 
