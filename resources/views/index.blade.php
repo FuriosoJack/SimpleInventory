@@ -96,6 +96,12 @@
                         </div>
                     </div>
                     <div class="field">
+                        <label>Fecha Expiracion</label>
+                        <div class="ui action input">
+                            <input type="date" name="expiration" required>
+                        </div>
+                    </div>
+                    <div class="field">
                         <label>Precio</label>
                         <div class="ui action input">
                         <input type="number" name="price" min="50" required>
@@ -115,6 +121,7 @@
                     <tr>
                         <th>ID Inventario</th>
                         <th>Producto</th>
+                        <th>Fecha Expiracion</th>
                         <th>Precio</th>
                         <th>Cantidad en inventario</th>
                         <th>Cantidad del Lote</th>
@@ -145,11 +152,14 @@
 
             var inputPrice = form.find("input[name='price']").first();
 
+            var expirationDate = form.find("input[name='expiration']").first();
+
 
             var data = {
                 quantity: inputQuantity.val(),
                 price_unit: inputPrice.val(),
-                id_product: select.val()
+                id_product: select.val(),
+                expiration: expirationDate.val()
             };
 
             $.ajax({
@@ -227,6 +237,9 @@
                 },
                 {
                     'data': "producto"
+                },
+                {
+                    'data': "expiracion"
                 },
                 {
                     "data": "precio_lote"

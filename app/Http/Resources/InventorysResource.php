@@ -21,7 +21,8 @@ class InventorysResource extends JsonResource
             "cantidad_inventario" => $this->quantity_current,
             "lote_code" => $this->lote->code,
             "cantidad_lote" => $this->lote->quantity,
-            "precio_lote" => $this->lote->price_unit
+            "precio_lote" => $this->lote->price_unit,
+            'expiracion' => $this->lote->expiration
         ];
     }
 }

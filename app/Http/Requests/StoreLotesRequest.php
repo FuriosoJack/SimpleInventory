@@ -26,7 +26,8 @@ class StoreLotesRequest extends FormRequest
         return [
             'quantity' => 'required',
             'price_unit' => 'required',
-            'id_product' => 'required|exists:products,id'
+            'id_product' => 'required|exists:products,id',
+            'expiration' => 'required|date'
         ];
     }
 }

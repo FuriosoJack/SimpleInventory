@@ -8,7 +8,7 @@ class Lote extends Model
 {
     protected $table = "lotes";
 
-    protected $fillable = ["code","quantity","price_unit","id_product"];
+    protected $fillable = ["code","quantity","price_unit","id_product","expiration"];
 
     public function product()
     {

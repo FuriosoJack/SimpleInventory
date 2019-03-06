@@ -17,7 +17,7 @@
     <script src="{{asset('js/dataTables.semanticui.min.js')}}"></script>
 </head>
 <body>
-<div class="ui container">
+<div class="ui container fluid" style="padding: 10px;">
     @yield('body')
 </div>
 

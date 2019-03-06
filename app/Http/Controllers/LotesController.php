@@ -28,7 +28,7 @@ class LotesController extends Controller
     {
 
 
-       $dataBaic = $request->only(['quantity','price_unit','id_product']);
+       $dataBaic = $request->only(['quantity','price_unit','id_product','expiration']);
 
         $dataBaic['code'] = str_random("10");
         $lote = Lote::create($dataBaic);
